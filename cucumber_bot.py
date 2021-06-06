@@ -39,6 +39,7 @@ class bot_main(object):
 
     @staticmethod
     def on_msg(message):
+        message = message.lower()
         if message == command_list[0]:
             return commands.command_punkname()
         if message == '{0} {1}'.format(command_list[1], ' '.join(bot_main.arg_split(message))):
