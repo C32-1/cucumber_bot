@@ -8,9 +8,9 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import bs4
 from timeit import default_timer as timer
 
-command_list = 'кликуха погода привет помощь'.split()
+command_list = '1 2 3 4'.split()
 
-const_api_key = '65de895f37ea08ee2a9c4d856de58897'
+const_api_key = ''
 
 class commands(object):
 
