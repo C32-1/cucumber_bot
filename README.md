@@ -1,2 +1,1 @@
-# cucumber_bot
-vk bot
+#it's vk bot
