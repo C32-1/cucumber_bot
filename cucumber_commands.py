@@ -8,7 +8,7 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import bs4
 from timeit import default_timer as timer
 
-command_list = '1 2 3 4'.split()
+command_list = '1 2 3 4'.split() #COMMAND NAMES
 
 const_api_key = ''
 
