@@ -1,16 +1,14 @@
 import datetime
 import json
 import random
+from multiprocessing import Pool
 import requests
-import vk_api
-from vk_api.utils import get_random_id
-from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import bs4
 from timeit import default_timer as timer
 
-command_list = '1 2 3 4'.split() #COMMAND NAMES
+command_list = 'name1 name2 name3 name4 name5'.split()
 
-const_api_key = ''
+const_api_key = 'weather api key'
 
 class commands(object):
 
@@ -55,3 +53,10 @@ class commands(object):
         for j in range(0, len(command_list)):
             output += '\n' + command_list[j]
         return 'Список комманд: {0}'.format(output)
+
+    @staticmethod
+    def command_p():
+        req = requests.get('http://www.gr-oborona.ru/pub/rock/egor_letov_stihi.html')
+        bsoup = bs4.BeautifulSoup(req.content, 'html.parser')
+        elements_pre = bsoup.find_all('pre')
+        return random.choice(elements_pre[1:])
