@@ -1,5 +1,7 @@
 import json
 import random
+import time
+
 import requests
 import vk_api
 from vk_api.utils import get_random_id
@@ -62,14 +64,19 @@ def main():
     lp = VkBotLongPoll(bot_main.cucumber_auth(), group_id=197949409)
     vk = bot_main.cucumber_auth().get_api()
 
-    for event in lp.listen():
-        if event.type == VkBotEventType.MESSAGE_NEW and event.from_chat:
-            try:
-                rm = event.message.get('text')
-                sender = event.chat_id
-                bot_main.msg_write(sender, bot_main.on_msg(rm))
-            except vk_api.ApiError:
-                pass
+    try:
+        for event in lp.listen():
+            if event.type == VkBotEventType.MESSAGE_NEW and event.from_chat:
+                try:
+                    rm = event.message.get('text')
+                    sender = event.chat_id
+                    bot_main.msg_write(sender, bot_main.on_msg(rm))
+                except vk_api.ApiError:
+                    pass
+    except requests.exceptions.ReadTimeout:
+        print('Connection error!')
+        main()
+
 
 if __name__ == '__main__':
     main()

@@ -6,11 +6,15 @@ import requests
 import bs4
 from timeit import default_timer as timer
 
-command_list = 'name1 name2 name3 name4 name5'.split()
+command_list = 'кликуха погода привет помощь стих'.split()
 
-const_api_key = 'weather api key'
+const_api_key = '65de895f37ea08ee2a9c4d856de58897'
+
+req = requests.get('http://www.gr-oborona.ru/pub/rock/egor_letov_stihi.html')
+bsoup = bs4.BeautifulSoup(req.content, 'html.parser')
 
 class commands(object):
+
 
     @staticmethod
     def command_punkname():
@@ -56,7 +60,13 @@ class commands(object):
 
     @staticmethod
     def command_p():
-        req = requests.get('http://www.gr-oborona.ru/pub/rock/egor_letov_stihi.html')
-        bsoup = bs4.BeautifulSoup(req.content, 'html.parser')
         elements_pre = bsoup.find_all('pre')
         return random.choice(elements_pre[1:])
+
+class need(object):
+
+    def __init__(self, user_name):
+        self.user_name = user_name
+
+    async def get_name(self):
+        return
