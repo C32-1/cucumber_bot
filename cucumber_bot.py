@@ -24,7 +24,7 @@ class bot_main(object):
             f.close()
             return token
         else:
-            return 'none'
+            return None
 
     @staticmethod
     def cucumber_auth():
